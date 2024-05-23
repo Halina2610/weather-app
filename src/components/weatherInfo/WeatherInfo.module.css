@@ -1,4 +1,8 @@
 .weather-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
 
 }
@@ -12,15 +16,21 @@
 }
 
 .date {
+
 }
 
 
 .weather-icon {
-
+    max-width: 150px;
 }
 
 .temperature-num {
-
+    background: linear-gradient(to right, #00d0ff, #2200ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+    font-size: 42px;
+    font-weight: bold;
 }
 
 .description {
@@ -31,6 +41,6 @@
 
 }
 
-.details-column {
+.details-block {
 
 }

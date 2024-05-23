@@ -28,23 +28,22 @@ export const WeatherInfo = ({
             {location && <div className={s["location"]}>{location}</div>}
             <div className={s["date"]}>{date}</div>
             {icon && <img className={s["weather-icon"]} src={icon} alt="Weather Icon" />}
-
             <span className={s["temperature-num"]}>
         {temperature ? temperature : "—"}
       </span>
             <div className={s["description"]}>{description}</div>
             <div className={s["details"]}>
-                <div className={s["details-column"]}>
-                    <p>{wind ? wind : "—"}</p>
-                    <p>Wind</p>
+                <div className={s["details-block"]}>
+                    <span>{wind ? wind : "—"}</span>
+                    <span>Wind</span>
                 </div>
-                <div className={s["details-column"]}>
-                    <p>{humidity ? humidity : "—"}</p>
-                    <p>Humidity</p>
+                <div className={s["details-block"]}>
+                    <span>{humidity ? humidity : "—"}</span>
+                    <span>Humidity</span>
                 </div>
-                <div className={s["details-column"]}>
-                    <p>{pressure ? pressure : "—"}</p>
-                    <p>Pressure</p>
+                <div className={s["details-block"]}>
+                    <span>{pressure ? pressure : "—"}</span>
+                    <span>Pressure</span>
                 </div>
             </div>
         </div>

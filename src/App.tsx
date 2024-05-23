@@ -7,24 +7,25 @@ import s from "./App.module.css"
 
 
 function App() {
-    const { location, errorMessageDisplay, date, isLoading, weatherData, setCity } = useWeathers();
-
+    const {backgroundImage, location, errorMessageDisplay, date, isLoading, weatherData, setCity} = useWeathers();
 
     if (isLoading) {
-        return <div>Loading...</div>; // Замените на ваш прелоадер
+        return <div>Loading...</div>;
     }
 
     return (
-        <div className={s["container"]}>
-            <Search setCity={setCity} />
-            <WeatherInfo
-                date={date}
-                location={location}
-                weatherData={weatherData}
-                errorMessageDisplay={errorMessageDisplay}
-            />
-            <Toast />
-        </div>
+        <main className={s["backgroundImage"]} style={{backgroundImage: `url(${backgroundImage})`}}>
+            <div className={s["container"]}>
+                <Search setCity={setCity}/>
+                <WeatherInfo
+                    date={date}
+                    location={location}
+                    weatherData={weatherData}
+                    errorMessageDisplay={errorMessageDisplay}
+                />
+            </div>
+            <Toast/>
+        </main>
     );
 }
 

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import {WeatherData, WeatherItem} from "../types/types";
 import {toast} from "react-toastify";
+import night from "../assets/images/night.jpg";
+import morning from "../assets/images/morning.jpg";
+import afternoon from "../assets/images/afternoon.jpg";
+import evening from "../assets/images/evening.jpg";
 
 export function useWeathers() {
     const [location, setLocation] = useState<string>("");
@@ -8,6 +12,7 @@ export function useWeathers() {
     const [date, setDate] = useState<string>("");
     const [city, setCity] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [backgroundImage, setBackgroundImage] = useState("");
     const [weatherData, setWeatherData] = useState<WeatherItem>({
         icon: "",
         temperature: "",
@@ -25,6 +30,21 @@ export function useWeathers() {
     useEffect(() => {
         getWeatherByCity(city);
     }, [city]);
+
+
+    useEffect(() => {
+        const hour = new Date().getHours();
+
+        if (hour < 6 || hour >= 20) {
+            setBackgroundImage(night);
+        } else if (hour < 12) {
+            setBackgroundImage(morning);
+        } else if (hour < 17) {
+            setBackgroundImage(afternoon);
+        } else {
+            setBackgroundImage(evening);
+        }
+    }, []);
 
     function getDate() {
         const today = new Date();
@@ -118,5 +138,5 @@ export function useWeathers() {
         setLocation("");
     }
 
-    return { location, errorMessageDisplay, date, isLoading, weatherData, setCity };
+    return { backgroundImage, location, errorMessageDisplay, date, isLoading, weatherData, setCity };
 }
