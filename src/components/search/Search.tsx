@@ -1,33 +1,31 @@
 import React, { useState } from "react";
 
-type SearchProps = {
+type Props = {
     setCity: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export default function Search({setCity}: SearchProps) {
-    const [inputValue, setInputValue] = useState("");
+export const Search = ({setCity}: Props) => {
+    const [inputValue, setinputValue] = useState("");
 
     function submitCity() {
         setCity(inputValue);
-        setInputValue("");
+        setinputValue("");
     }
 
     return (
         <section className="search-section">
             <input
                 type="text"
-                className="search-input"
+                className="search"
                 value={inputValue}
                 placeholder="Search city"
-                onChange={(e) => setInputValue(e.currentTarget.value)}
+                onChange={(e) => setinputValue(e.currentTarget.value)}
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
                         submitCity();
                     }
                 }}
-                aria-describedby="search-hint"
             />
-            <span id="search-hint">Enter the name of the city and press Enter</span>
             <button
                 type="button"
                 className="search-btn"
@@ -35,6 +33,7 @@ export default function Search({setCity}: SearchProps) {
                     submitCity();
                 }}
             >
+                <i className="fa-solid fa-magnifying-glass"></i>
             </button>
         </section>
     );
