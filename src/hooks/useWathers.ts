@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import {WeatherData, WeatherItem} from "../types/types";
 import {toast} from "react-toastify";
-import night from "../assets/images/night.webp";
-import morning from "../assets/images/morning.webp";
-import afternoon from "../assets/images/afternoon.webp";
-import evening from "../assets/images/evening.webp";
+import night from "../assets/images/night.jpg";
+import morning from "../assets/images/morning.jpg";
+import afternoon from "../assets/images/afternoon.jpg";
+import evening from "../assets/images/evening.jpg";
 
 export function useWeathers() {
     const [location, setLocation] = useState<string>("");
@@ -73,7 +73,8 @@ export function useWeathers() {
         if (city) {
             const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
             await fetchWeatherData(api);
-            toast.success('Weather data fetched successfully')
+        } else {
+            toast.error('Please enter a valid city name');
         }
     }
 
@@ -82,11 +83,14 @@ export function useWeathers() {
         try {
             const res = await fetch(api);
             const data = await res.json();
+            if (data.cod === "404") {
+                throw new Error(data.message);
+            }
             displayWeather(data);
             toast.success('Weather data fetched successfully')
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error fetching weather data', error);
-            toast.error('Error fetching weather data')
+            toast.error(`Error fetching weather data: ${error.message}`)
         }
         setIsLoading(false);
     }
