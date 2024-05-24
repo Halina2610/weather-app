@@ -27,7 +27,7 @@ export const WeatherInfo = ({
             )}
             {location && <div className={s["location"]}>{location}</div>}
             <div className={s["date"]}>{date}</div>
-            <div>
+            <div className={s["weather"]}>
                 {icon && <img className={s["weather-icon"]} src={icon} alt="Weather Icon"/>}
                 <span className={s["temperature-num"]}>
         {temperature ? temperature : "—"}
