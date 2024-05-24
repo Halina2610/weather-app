@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import {WeatherData, WeatherItem} from "../types/types";
 import {toast} from "react-toastify";
-import night from "../assets/images/night.jpg";
-import morning from "../assets/images/morning.jpg";
-import afternoon from "../assets/images/afternoon.jpg";
-import evening from "../assets/images/evening.jpg";
+import night from "../assets/images/night.webp";
+import morning from "../assets/images/morning.webp";
+import afternoon from "../assets/images/afternoon.webp";
+import evening from "../assets/images/evening.webp";
 
 export function useWeathers() {
     const [location, setLocation] = useState<string>("");

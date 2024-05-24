@@ -15,9 +15,9 @@
     background: linear-gradient(to right, #5500ff, #00d0ff);
     -webkit-background-clip: text;
     color: transparent;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
-    padding: 10px;
-
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    padding: 25px 0 15px;
+    font-weight: 600;
 }
 
 .date {
@@ -28,27 +28,26 @@
 
 .weather {
     min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .weather-icon {
-    position: relative;
 }
 
 .temperature-num {
-    position: absolute;
-    left: 45%;
-    top: 55%;
     background: linear-gradient(to right, #00d0ff, #5500ff);
     -webkit-background-clip: text;
     color: transparent;
     text-shadow: 3px 3px 6px rgba(48, 18, 84, 0.8);
     font-size: 62px;
     font-weight: 900;
-    margin-bottom: 20px;
 }
 
 .description {
+    margin: 25px 0 10px 0;
     font-size: 26px;
-    padding: 10px;
 }
 
 .details-block {
