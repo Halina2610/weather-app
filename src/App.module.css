@@ -1,6 +1,4 @@
-
 .backgroundImage {
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +13,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
 
     min-width: 420px;
     min-height: 580px;

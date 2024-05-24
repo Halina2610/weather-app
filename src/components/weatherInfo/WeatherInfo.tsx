@@ -1,5 +1,5 @@
 import React from "react";
-import { WeatherItem } from "../../types/types";
+import {WeatherItem} from "../../types/types";
 import s from "./WeatherInfo.module.css"
 
 type Props = {
@@ -15,7 +15,7 @@ export const WeatherInfo = ({
                                 location,
                                 date,
                             }: Props) => {
-    const { icon, temperature, description, wind, humidity, pressure } =
+    const {icon, temperature, description, wind, humidity, pressure} =
         weatherData;
 
     return (
@@ -27,23 +27,25 @@ export const WeatherInfo = ({
             )}
             {location && <div className={s["location"]}>{location}</div>}
             <div className={s["date"]}>{date}</div>
-            {icon && <img className={s["weather-icon"]} src={icon} alt="Weather Icon" />}
-            <span className={s["temperature-num"]}>
+            <div>
+                {icon && <img className={s["weather-icon"]} src={icon} alt="Weather Icon"/>}
+                <span className={s["temperature-num"]}>
         {temperature ? temperature : "—"}
       </span>
+            </div>
             <div className={s["description"]}>{description}</div>
-            <div className={s["details"]}>
+            <div>
                 <div className={s["details-block"]}>
-                    <span>{wind ? wind : "—"}</span>
-                    <span>Wind</span>
+                    <span>{wind ? wind : "—"} </span>
+                    <span> Wind</span>
                 </div>
-                <div className={s["details-block"]}>
-                    <span>{humidity ? humidity : "—"}</span>
-                    <span>Humidity</span>
+                <div>
+                    <span>{humidity ? humidity : "—"} </span>
+                    <span> Humidity</span>
                 </div>
-                <div className={s["details-block"]}>
-                    <span>{pressure ? pressure : "—"}</span>
-                    <span>Pressure</span>
+                <div>
+                    <span>{pressure ? pressure : "—"} </span>
+                    <span> Pressure</span>
                 </div>
             </div>
         </div>

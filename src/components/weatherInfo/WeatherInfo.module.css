@@ -3,44 +3,53 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-
-
 }
 
 .error-message {
-
+    color: #ec1818;
+    font-size: 18px;
 }
 
 .location {
+    font-size: 32px;
+    background: linear-gradient(to right, #5500ff, #00d0ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+    padding: 10px;
 
 }
 
 .date {
-
+    font-size: 26px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
 }
 
 
 .weather-icon {
-    max-width: 150px;
+    position: relative;
 }
 
 .temperature-num {
-    background: linear-gradient(to right, #00d0ff, #2200ff);
+    position: absolute;
+    left: 45%;
+    top: 55%;
+    background: linear-gradient(to right, #00d0ff, #5500ff);
     -webkit-background-clip: text;
     color: transparent;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
-    font-size: 42px;
-    font-weight: bold;
+    text-shadow: 3px 3px 6px rgba(48, 18, 84, 0.8);
+    font-size: 62px;
+    font-weight: 900;
+    margin-bottom: 20px;
 }
 
 .description {
-
-}
-
-.details {
-
+    font-size: 26px;
+    padding: 10px;
 }
 
 .details-block {
-
+    padding: 5px;
+    text-align: left;
 }
