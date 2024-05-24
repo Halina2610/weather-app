@@ -63,8 +63,7 @@ export function useWeathers() {
 
         async function success(position: GeolocationPosition) {
             const { latitude, longitude } = position.coords;
-           // const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`;
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=acc3f99252df38905471edbf93b6469f}`;
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`;
             await fetchWeatherData(api);
             toast.success('Weather data fetched successfully')
         }
@@ -72,8 +71,7 @@ export function useWeathers() {
 
     async function getWeatherByCity(city: string) {
         if (city) {
-            //const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
-            const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=acc3f99252df38905471edbf93b6469f`;
+            const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
             await fetchWeatherData(api);
         } else {
             toast.error('Please enter a valid city name');
