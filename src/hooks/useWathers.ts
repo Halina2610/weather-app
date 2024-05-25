@@ -57,8 +57,7 @@ export function useWeathers() {
 
     function getWeatherByGeolocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(success);
-            toast.success('Weather geolocation fetched successfully')
+            navigator.geolocation.getCurrentPosition(success, error);
         }
 
         async function success(position: GeolocationPosition) {
@@ -66,7 +65,10 @@ export function useWeathers() {
             //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`;
             const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=acc3f99252df38905471edbf93b6469f`;
             await fetchWeatherData(api);
-            toast.success('Weather data fetched successfully')
+        }
+
+        function error(err: GeolocationPositionError) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
         }
     }
 
@@ -76,7 +78,7 @@ export function useWeathers() {
             const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=acc3f99252df38905471edbf93b6469f`;
             await fetchWeatherData(api);
         } else {
-            toast.error('Please enter a valid city name');
+            console.error('Please enter a valid city name');
         }
     }
 
@@ -89,10 +91,8 @@ export function useWeathers() {
                 throw new Error(data.message);
             }
             displayWeather(data);
-            toast.success('Weather data fetched successfully')
         } catch (error: any) {
-            console.error('Error fetching weather data', error);
-            toast.error(`Error fetching weather data: ${error.message}`)
+            console.error(`Error fetching weather data: ${error.message}`)
         }
         setIsLoading(false);
     }
@@ -110,12 +110,9 @@ export function useWeathers() {
                 pressure: `${data.main.pressure} hPa`,
             });
             setLocation(`${data.name}, ${data.sys.country}`);
-            toast.success('Weather data fetched successfully')
 
         } else {
             console.error('Error data')
-            toast.error('Error data')
-
         }
     }
 
@@ -127,7 +124,11 @@ export function useWeathers() {
         if (data.cod === "404") {
             resetData();
             setErrorMessageDisplay(true);
-        } else {
+        } else if (data.cod === "401"){
+            resetData();
+            setErrorMessageDisplay(true);
+        }
+        else {
             setErrorMessageDisplay(false);
         }
     }

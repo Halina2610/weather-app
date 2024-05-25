@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    transition: all 0.3s ease-in-out;
 }
 
 .error-message {
@@ -49,9 +50,4 @@
 .description {
     margin: 25px 0 10px 0;
     font-size: 26px;
-}
-
-.details-block {
-    padding: 5px;
-    text-align: left;
 }
