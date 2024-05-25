@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {WeatherData, WeatherItem} from "../types/types";
-import {toast} from "react-toastify";
 import night from "../assets/images/night.webp";
 import morning from "../assets/images/morning.webp";
 import afternoon from "../assets/images/afternoon.webp";
@@ -28,7 +27,9 @@ export function useWeathers() {
     }, []);
 
     useEffect(() => {
-        getWeatherByCity(city);
+        if (city) {
+            getWeatherByCity(city)
+        }
     }, [city]);
 
 
@@ -62,8 +63,8 @@ export function useWeathers() {
 
         async function success(position: GeolocationPosition) {
             const { latitude, longitude } = position.coords;
-            //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`;
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=acc3f99252df38905471edbf93b6469f`;
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`;
+            //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=acc3f99252df38905471edbf93b6469f`;
             await fetchWeatherData(api);
         }
 
@@ -74,8 +75,8 @@ export function useWeathers() {
 
     async function getWeatherByCity(city: string) {
         if (city) {
-          //  const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
-            const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=acc3f99252df38905471edbf93b6469f`;
+             const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
+           // const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=acc3f99252df38905471edbf93b6469f`;
             await fetchWeatherData(api);
         } else {
             console.error('Please enter a valid city name');
@@ -92,10 +93,11 @@ export function useWeathers() {
             }
             displayWeather(data);
         } catch (error: any) {
-            console.error(`Error fetching weather data: ${error.message}`)
+            console.error(`Error fetching weather data: ${error.message}`);
         }
         setIsLoading(false);
     }
+
 
     function displayWeather(data: WeatherData) {
         if (data.weather) {
@@ -124,11 +126,7 @@ export function useWeathers() {
         if (data.cod === "404") {
             resetData();
             setErrorMessageDisplay(true);
-        } else if (data.cod === "401"){
-            resetData();
-            setErrorMessageDisplay(true);
-        }
-        else {
+        } else {
             setErrorMessageDisplay(false);
         }
     }
