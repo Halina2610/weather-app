@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import {WeatherData, WeatherItem} from "../types/types";
 import night from "../assets/images/night.webp";
 import morning from "../assets/images/morning.webp";
@@ -49,9 +49,9 @@ export function useWeathers() {
 
     function getDate() {
         const today = new Date();
-        const weekday = today.toLocaleString("en", { weekday: "long" });
+        const weekday = today.toLocaleString("en", {weekday: "long"});
         const day = today.getDate();
-        const month = today.toLocaleString("en", { month: "long" });
+        const month = today.toLocaleString("en", {month: "long"});
         const currentDate = `${weekday} ${day} ${month}`;
         setDate(currentDate);
     }
@@ -62,9 +62,9 @@ export function useWeathers() {
         }
 
         async function success(position: GeolocationPosition) {
-            const { latitude, longitude } = position.coords;
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`;
-            //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=acc3f99252df38905471edbf93b6469f`;
+            const {latitude, longitude} = position.coords;
+            // const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`;
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=acc3f99252df38905471edbf93b6469f`;
             await fetchWeatherData(api);
         }
 
@@ -75,8 +75,8 @@ export function useWeathers() {
 
     async function getWeatherByCity(city: string) {
         if (city) {
-             const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
-           // const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=acc3f99252df38905471edbf93b6469f`;
+            //const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
+            const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=acc3f99252df38905471edbf93b6469f`;
             await fetchWeatherData(api);
         } else {
             console.error('Please enter a valid city name');
@@ -97,7 +97,6 @@ export function useWeathers() {
         }
         setIsLoading(false);
     }
-
 
     function displayWeather(data: WeatherData) {
         if (data.weather) {
@@ -143,5 +142,5 @@ export function useWeathers() {
         setLocation("");
     }
 
-    return { backgroundImage, location, errorMessageDisplay, date, isLoading, weatherData, setCity };
+    return {backgroundImage, location, errorMessageDisplay, date, isLoading, weatherData, setCity};
 }
