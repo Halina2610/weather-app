@@ -18,6 +18,7 @@ export const WeatherInfo = ({
                             }: Props) => {
     const {icon, temperature, description, wind, humidity, pressure} =
         weatherData;
+    {console.log(errorMessageDisplay)}
 
     return (
         <div className={s["weather-container"]}>

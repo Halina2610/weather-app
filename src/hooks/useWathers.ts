@@ -75,7 +75,7 @@ export function useWeathers() {
 
     async function getWeatherByCity(city: string) {
         if (city) {
-            //const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
+            // const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
             const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=acc3f99252df38905471edbf93b6469f`;
             await fetchWeatherData(api);
         } else {
@@ -94,9 +94,11 @@ export function useWeathers() {
             displayWeather(data);
         } catch (error: any) {
             console.error(`Error fetching weather data: ${error.message}`);
+            setErrorMessageDisplay(true); // Добавьте эту строку
         }
         setIsLoading(false);
     }
+
 
     function displayWeather(data: WeatherData) {
         if (data.weather) {
