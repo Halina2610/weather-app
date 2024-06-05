@@ -13,5 +13,6 @@ export const Spinner = ({ className, size = 'large' }: Props) => {
     [s.small]: size === 'small',
   })
 
-  return <div className={classes}></div>
+  return <div className={classes}/>
 }
+

@@ -1,9 +1,9 @@
 export type WeatherData = {
     weather: Array<{
-        id: "string";
-        main: "string";
-        description: "string";
-        icon: "string";
+        id: string;
+        main: string;
+        description: string;
+        icon: string;
     }>;
     main: {
         temp: number;
@@ -18,6 +18,7 @@ export type WeatherData = {
     };
     name: string;
     cod: string | number;
+    message?: string;
 }
 
 export type WeatherItem = {
