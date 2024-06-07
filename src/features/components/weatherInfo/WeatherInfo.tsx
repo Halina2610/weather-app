@@ -1,7 +1,7 @@
 import React from "react";
+import s from "./weatherInfo.module.css"
 import {WeatherItem} from "../../types/types";
-import s from "./WeatherInfo.module.css"
-import {Spinner} from "../spinner";
+import {Spinner} from "../../../shared/components/spinner/Spinner";
 
 type Props = {
     weatherData: WeatherItem;
@@ -38,16 +38,13 @@ export const WeatherInfo = ({
             <div className={s["description"]}>{description}</div>
             <div>
                 <div>
-                    <span> Wind: </span>
-                    <span>{wind ? wind : "—"}</span>
+                    <span> Wind: {wind ? wind : "—"}</span>
                 </div>
                 <div>
-                    <span> Humidity: </span>
-                    <span>{humidity ? humidity : "—"}</span>
+                    <span> Humidity: {humidity ? humidity : "—"}</span>
                 </div>
                 <div>
-                    <span> Pressure: </span>
-                    <span>{pressure ? pressure : "—"}</span>
+                    <span> Pressure: {pressure ? pressure : "—"}</span>
 
                 </div>
             </div>
